@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import React from 'react';
-import {Link} from 'react-router-dom'
-import x from 'icons/tags.svg'
-// require('icons/tags.svg')
-console.log(x);
+import { NavLink} from 'react-router-dom'
+import Icon from 'components/Icon'
+// import x from 'icons/tags.svg'
+
+// console.log(x);
 
 const NavWrapper = styled.nav`
   line-height:24px;
@@ -13,8 +14,23 @@ const NavWrapper = styled.nav`
     >li{
       width:33.33%;
       text-align:center;
-      padding:16px
+      >a{
+      display:flex;
+      padding:4px 0;
+      align-items:center;
+      flex-direction:column;
+      .icon{
+        width:24px;
+        height: 24px;
+      }
+      &.selected{
+        color:red;
+        .icon{
+          fill:red;
+        }
+      }
     }
+  }
 }`
 
 const Nav = ()=>{
@@ -22,16 +38,22 @@ const Nav = ()=>{
     <NavWrapper>
     <ul>
       <li>
-        <svg>
-          <use xlinkHref="#tags"></use>
-        </svg>
-        <Link to="/tags">标签页</Link>
+        <NavLink to="/tags" activeClassName="selected">
+        <Icon name="tags"></Icon>
+          标签页
+        </NavLink>
       </li>
       <li>
-        <Link to="/money">记账页</Link>
+        <NavLink to="/money" activeClassName="selected">
+          <Icon name="money"></Icon>
+          记账页
+        </NavLink>
       </li>
       <li>
-        <Link to="/statistics">统计页</Link>
+        <NavLink to="/statistics" activeClassName="selected">
+          <Icon name="statistics"></Icon>
+          统计页
+        </NavLink>
       </li>
     </ul>
   </NavWrapper>
