@@ -25,7 +25,26 @@ const TagsSection = styled.section`
     color:#666;
   }
 `
-const NotesSection = styled.section``
+const NotesSection = styled.section`
+  background-color:#f5f5f5;
+  padding:0 16px;
+  font-size:14px;
+  >label{
+    display: flex;
+    align-items:center;
+    >span{
+      margin-right:16px;
+      white-space:nowrap;
+    }
+    >input{
+      border:none;
+      background:none;
+      display:block;
+      width:100%;
+      height:72px;
+    }
+  }
+`
 const CategorySection = styled.section``
 const NumberPadSection = styled.section``
 
@@ -45,7 +64,7 @@ function Tags() {
         <NotesSection>
           <label htmlFor="">
             <span>备注</span>
-            <input type="text"/>
+            <input type="text" placeholder="在这里添加备注"/>
           </label>
           </NotesSection>  
       </section>
