@@ -1,85 +1,46 @@
 import React from 'react'
 import Layout from 'components/Layout'
 import styled from 'styled-components'
+import { TagsSection } from 'components/TagsSection';
+import { CategorySection } from './CategorySection';
+import { NotesSection } from './NotesSection';
+import { NumberPadSection } from './NumberPadSection';
 
-const TagsSection = styled.section`
-    background-color:#fff;
-      padding: 12px 16px;
-  >ol{
-    margin: 0 -12px;
-    >li{
-      display: inline-block;
-      margin: 8px 12px;
-      background-color:#D9D9D9;
-      border-radius:18px;
-      padding: 3px 17px;
-      font-size:14px;
-    }
-  }
-  >button{
-    margin-top:8px;
-    background:none;
-    border:none;
-    border-bottom:1px solid #333;
-    padding:2px 4px;
-    color:#666;
-  }
-`
-const NotesSection = styled.section`
-  background-color:#f5f5f5;
-  padding:0 16px;
-  font-size:14px;
-  >label{
-    display: flex;
-    align-items:center;
-    >span{
-      margin-right:16px;
-      white-space:nowrap;
-    }
-    >input{
-      border:none;
-      background:none;
-      display:block;
-      width:100%;
-      height:72px;
-    }
-  }
-`
-const CategorySection = styled.section``
-const NumberPadSection = styled.section``
 
+   
+
+
+const MyLayout = styled(Layout)`
+  display:flex;
+  flex-direction:column;
+`
 function Tags() {
   return (
-    <Layout>
+    <MyLayout>
        <TagsSection>
         <ol>
           <li>衣</li> 
-          <li>食</li> 
+          <li>食</li>  
           <li>住</li> 
           <li>行</li> 
         </ol>
         <button>新增标签</button>
       </TagsSection>
-      <section>
         <NotesSection>
           <label htmlFor="">
             <span>备注</span>
             <input type="text" placeholder="在这里添加备注"/>
           </label>
           </NotesSection>  
-      </section>
-      <section>
         <CategorySection>
           <ul>
-            <li>收入</li>
+            <li className="selected">收入</li>
             <li>支出</li>
           </ul>
         </CategorySection>
-      </section>
-      <section>
         <NumberPadSection>
-          <div>100</div>
-          <div>
+          <div className="output">100</div>
+          <div className="pad clearfix">
             <button>1</button>
             <button>2</button>
             <button>3</button>
@@ -91,13 +52,12 @@ function Tags() {
             <button>7</button>
             <button>8</button>
             <button>9</button>
-            <button>OK</button>
-            <button>0</button>
-            <button>.</button>
+            <button className="ok">OK</button>
+            <button className="zero">0</button>
+            <button className="dot">.</button>
           </div>
         </NumberPadSection>
-      </section>
-    </Layout>
+    </MyLayout>
   );
 }
 
