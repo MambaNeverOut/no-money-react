@@ -3,11 +3,8 @@ import Layout from 'components/Layout'
 import styled from 'styled-components'
 import { TagsSection } from 'components/TagsSection';
 import { CategorySection } from './CategorySection';
-import { NotesSection } from './NotesSection';
+import { NoteSection } from './NoteSection';
 import { NumberPadSection } from './NumberPadSection';
-
-
-   
 
 
 const MyLayout = styled(Layout)`
@@ -17,13 +14,8 @@ const MyLayout = styled(Layout)`
 function Tags() {
   return (
     <MyLayout>
-       <TagsSection></TagsSection>
-        <NotesSection>
-          <label htmlFor="">
-            <span>备注</span>
-            <input type="text" placeholder="在这里添加备注"/>
-          </label>
-          </NotesSection>  
+       <TagsSection/>
+        <NoteSection/>  
         <CategorySection>
           <ul>
             <li className="selected">收入</li>

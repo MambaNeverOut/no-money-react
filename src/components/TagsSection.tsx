@@ -39,9 +39,9 @@ const TagsSection:React.FC=(props)=>{
   const [selectedTags,setSelectedTag] = useState<string[]>([])
 
   const onAddTag= ()=>{
-    const tagName = window.prompt('新标签的名称为')
+    const tagName:string|undefined = window.prompt('新标签的名称为')?.trim()
     console.log(`---${tagName}---`);
-    if(tagName === ''){
+    if(tagName === ''|| tagName === undefined){
       alert('标签名不能为空')
       return false;
     }
