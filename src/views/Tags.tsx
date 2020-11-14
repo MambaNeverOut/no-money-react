@@ -16,12 +16,7 @@ function Tags() {
     <MyLayout>
        <TagsSection/>
         <NoteSection/>  
-        <CategorySection>
-          <ul>
-            <li className="selected">收入</li>
-            <li>支出</li>
-          </ul>
-        </CategorySection>
+        <CategorySection/>
         <NumberPadSection>
           <div className="output">100</div>
           <div className="pad clearfix">
