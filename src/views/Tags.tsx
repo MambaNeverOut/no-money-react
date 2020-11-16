@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from 'components/Layout'
 import styled from 'styled-components'
-import { TagsSection } from 'components/TagsSection';
-import { CategorySection } from './CategorySection';
-import { NoteSection } from './NoteSection';
-import { NumberPadSection } from './NumberPadSection';
+import { TagsSection } from 'views/Tags/TagsSection';
+import { CategorySection } from './Tags/CategorySection';
+import { NoteSection } from './Tags/NoteSection';
+import { NumberPadSection } from './Tags/NumberPadSection';
 
 
 const MyLayout = styled(Layout)`
