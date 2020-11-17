@@ -33,14 +33,15 @@ const Wrapper = styled.section`
     color:#666;
   }
 `
-
-const TagsSection:React.FC=(props)=>{
+type Props = {
+  value: string[],
+  onChange: (value:string[]) => void
+}
+const TagsSection:React.FC<Props>=(props)=>{
   const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
-  const [selectedTags,setSelectedTag] = useState<string[]>([])
-
+  // const [selectedTags,setSelectedTag] = useState<string[]>([])
   const onAddTag= ()=>{
     const tagName:string|undefined = window.prompt('新标签的名称为')?.trim()
-    console.log(`---${tagName}---`);
     if(tagName === ''|| tagName === undefined){
       alert('标签名不能为空')
       return false;
@@ -50,14 +51,14 @@ const TagsSection:React.FC=(props)=>{
     }
   }
   const onToggleTag = (tag:string)=>{
-    const index = selectedTags.indexOf(tag)
+    const index = props.value.indexOf(tag)
     if(index < 0){
-      setSelectedTag([...selectedTags, tag])
+      props.onChange([...props.value, tag])
     }else{
-      setSelectedTag(selectedTags.filter(t=>t!==tag))      
+      props.onChange(props.value.filter(t=>t!==tag))      
     }
   }
-  const getClass = (tag:string)=> selectedTags.indexOf(tag)>=0?'selected':''
+  const getClass = (tag:string)=> props.value.indexOf(tag)>=0?'selected':''
   return (
     <Wrapper>
       <ol>

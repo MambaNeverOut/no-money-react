@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from 'components/Layout'
 import styled from 'styled-components'
 import { TagsSection } from 'views/Tags/TagsSection';
@@ -11,13 +11,48 @@ const MyLayout = styled(Layout)`
   display:flex;
   flex-direction:column;
 `
+type Category = '-' | '+'
 function Tags() {
+  const [selected, setSelected] = useState({
+    tags: [] as string[],
+    note: '',
+    category: '-' as Category,
+    amount: 0
+  })
   return (
     <MyLayout>
-       <TagsSection/>
-        <NoteSection/>  
-        <CategorySection/>
-        <NumberPadSection/>
+      {selected.tags}
+      {selected.note}
+      {selected.category}
+      {selected.amount} // 遗留bug，小数点会被转换消失
+       <TagsSection value={selected.tags} 
+                    onChange={(tags) => setSelected({
+                      ...selected,
+                      tags:tags
+                    })}/>
+        <NoteSection value={selected.note}
+                     onChange={(note) => {
+                       setSelected({
+                         ...selected,
+                         note: note
+                       })
+                     }}/>  
+        <CategorySection value={selected.category}
+                         onChange={(category)=>{
+                            setSelected({
+                              ...selected,
+                              category:category
+                            })
+                          }}/>
+        <NumberPadSection value={selected.amount}
+                          onChange={(amount)=>{
+                            setSelected({
+                              ...selected,
+                              amount:amount
+                            })
+                          }}
+                          onOk={()=>{}}
+                          />
     </MyLayout>
   );
 }

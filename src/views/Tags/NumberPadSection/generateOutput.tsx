@@ -1,6 +1,7 @@
 // type InputString = '0' | '1' | '2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'.'|'删除'|'清空'|'确定'
 const generateOutput = (text:string,output='0')=>{
-
+  console.log(text);
+    
   switch (text){
     case '0':
     case '1':
@@ -18,6 +19,8 @@ const generateOutput = (text:string,output='0')=>{
         return output + text
       }
     case '.':
+      console.log(output);
+      
       if(output.indexOf('.')>=0){ return output}
       return output + '.'
     case '删除':
