@@ -29,7 +29,7 @@ export default function App() {
               <Route path="/statistics">
                 <Statistics />
               </Route>
-              <Redirect exact from="/" to="/money"/>
+              <Redirect exact from="/" to="/tags"/>
               <Route path="*">
                 <NoMatch/>
               </Route>
