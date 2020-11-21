@@ -1,10 +1,13 @@
 import React from 'react'
 import Layout from 'components/Layout'
+import { useTags } from 'components/useTags';
 
 function Money() {
+  const {tags, setTags} = useTags()
   return (
     <Layout>
-      记账页
+      {tags.map(tag=>
+      <li key={tag}>{tag}</li>)}
     </Layout>
   );
 }
