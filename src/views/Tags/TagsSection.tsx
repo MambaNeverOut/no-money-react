@@ -1,4 +1,5 @@
 import { useTags } from 'components/useTags';
+import { createId } from 'lib/createId';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -48,7 +49,7 @@ const TagsSection:React.FC<Props>=(props)=>{
       return false;
     }
     if(tagName !== null){
-      setTags([...tags, {id:Math.random(),name:tagName}])
+      setTags([...tags, {id:createId(),name:tagName}])
     }
   }
   const onToggleTag = (tag:number)=>{
