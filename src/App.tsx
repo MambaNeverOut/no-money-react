@@ -24,8 +24,8 @@ export default function App() {
               <Route exact path="/tags">
                 <Tags />
               </Route>
-              <Route exact path="/tags/:tag">
-                <Tag></Tag>
+              <Route exact path="/tags/:id">
+                <Tag />
               </Route>
               <Route exact path="/money">
                 <Money />
