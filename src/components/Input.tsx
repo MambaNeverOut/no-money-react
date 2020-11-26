@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 import styled from "styled-components"
 
 const Label = styled.label`
@@ -13,7 +13,7 @@ const Label = styled.label`
       background:none;
       display:block;
       width:100%;
-      height:72px;
+      height:44px;
     }
 `
 type Props={
@@ -24,7 +24,7 @@ const Input:React.FC<Props> = (props)=>{
   return (
     <Label>
       <span>{label}</span>
-      <input {...rest}/>
+      <input {...rest}/> 
     </Label>
   )
 }

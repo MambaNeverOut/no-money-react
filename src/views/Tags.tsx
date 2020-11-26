@@ -28,6 +28,8 @@ function Tags() {
   }
   return (
     <MyLayout>
+      {selected.note}
+
       {/* {selected.tags}
       {selected.note}
       {selected.category}
