@@ -26,11 +26,12 @@ const InputWrapper = styled.div`
   margin-top: 8px;
 `
 const Tag:React.FC = (props)=>{
-  const {tags, setTags, findTag} = useTags()
+  const { findTag, updateTag} = useTags()
   let { id } = useParams<Params>()
-  console.log(id);
   const tag = findTag(parseInt(id))
-  const onChange = (e:any)=>{}
+  const onChange = (e:any)=>{
+    updateTag(tag.id,{name:e.target.value})
+  }
   
   return (
     <Layout>
