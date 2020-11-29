@@ -27,17 +27,24 @@ const useTags = () => {
     }
     return result
   }
-  const updateTag = (id:number, obj:{name:string})=>{
-    const index = findTagIndex(id)
-    const tagsClone = JSON.parse(JSON.stringify(tags)) // 深拷贝tags，而不直接修改tags
-    tagsClone.splice(index, 1,{id:id,name:obj.name})  // 修改拷贝的tags，并使用setTags更新
-    setTags(tagsClone)
+  const updateTag = (id:number, {name}:{name:string})=>{
+    // const index = findTagIndex(id)
+    // const tagsClone = JSON.parse(JSON.stringify(tags)) // 深拷贝tags，而不直接修改tags
+    // tagsClone.splice(index, 1,{id:id,name:obj.name})  // 修改拷贝的tags，并使用setTags更新
+    // setTags(tagsClone)
+
+
+   setTags(tags.map(tag=>{
+      return tag.id===id? {id:id, name:name}:tag
+    }))
   }
   const deleteTag = (id:number)=>{
-    const index = findTagIndex(id)
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    tagsClone.splice(index, 1)
-    setTags(tagsClone)
+    // const index = findTagIndex(id)
+    // const tagsClone = JSON.parse(JSON.stringify(tags))
+    // tagsClone.splice(index, 1)
+    // setTags(tagsClone)
+
+    setTags(tags.filter(tag=>tag.id !== id))
   }
   return {
     tags,setTags,findTag,updateTag,deleteTag

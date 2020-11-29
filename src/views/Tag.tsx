@@ -6,7 +6,7 @@ import Layout from 'components/Layout';
 import { Space } from 'components/Space';
 import { useTags } from 'components/useTags';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 type Params = {
@@ -48,10 +48,14 @@ const Tag:React.FC = (props)=>{
      </div>
     )
   }
+  const history = useHistory()
+  const onClickBack = ()=>{
+    history.goBack()
+  }
   return (
     <Layout>
       <TopBar>
-        <Icon name="left"/>
+        <Icon name="left" onClick={onClickBack}/>
         <span>编辑标签</span>
         <Icon/>
       </TopBar>
