@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames'
 
 // require('icons/tags.svg')
 // require('icons/money.svg')
@@ -9,12 +10,13 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 type Props ={
   name?:string,
-  onClick?: ()=>void
-}
+}& React.SVGAttributes<SVGElement>
 
 const Icon = (props:Props)=>{
+  const {name,className,children, ...rest} = props
   return (
-    <svg className="icon" onClick={props.onClick}>
+    // <svg className={`icon ${className?className:''}`}  {...rest}>
+    <svg className={classnames('icon',className)}  {...rest}>
       {props.name && <use xlinkHref={'#'+props.name}></use>}
     </svg>
   )

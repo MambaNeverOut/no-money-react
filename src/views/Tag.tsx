@@ -55,7 +55,7 @@ const Tag:React.FC = (props)=>{
   return (
     <Layout>
       <TopBar>
-        <Icon name="left" onClick={onClickBack}/>
+        <Icon name="left"  onClick={onClickBack}/>
         <span>编辑标签</span>
         <Icon/>
       </TopBar>

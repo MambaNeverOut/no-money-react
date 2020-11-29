@@ -15,7 +15,7 @@ const defaultTags = [
     // {id: (new createID()).addOneHundred(), name:'行'},
 ]
 const useTags = () => {
-  const [tags, setTags] = useState<tag []>(defaultTags)
+  const [tags, setTags] = useState<tag []>([])
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0]  
   const findTagIndex = (id:number)=>{
     let result = -1 
@@ -26,6 +26,16 @@ const useTags = () => {
       }
     }
     return result
+  }
+  const addTag= ()=>{
+    const tagName:string|undefined = window.prompt('新标签的名称为')?.trim()
+    if(tagName === ''|| tagName === undefined){
+      alert('标签名不能为空')
+      return false;
+    }
+    if(tagName !== null){
+      setTags([...tags, {id:createId(),name:tagName}])
+    }
   }
   const updateTag = (id:number, {name}:{name:string})=>{
     // const index = findTagIndex(id)
@@ -47,7 +57,7 @@ const useTags = () => {
     setTags(tags.filter(tag=>tag.id !== id))
   }
   return {
-    tags,setTags,findTag,updateTag,deleteTag
+    tags,setTags,findTag,addTag,updateTag,deleteTag
   }
 }
 

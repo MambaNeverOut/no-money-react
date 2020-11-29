@@ -40,18 +40,9 @@ type Props = {
   onChange: (value:number[]) => void
 }
 const TagsSection:React.FC<Props>=(props)=>{
-  const {tags,setTags} = useTags()
+  const {tags,setTags,addTag} = useTags()
   // const [selectedTags,setSelectedTag] = useState<string[]>([])
-  const onAddTag= ()=>{
-    const tagName:string|undefined = window.prompt('新标签的名称为')?.trim()
-    if(tagName === ''|| tagName === undefined){
-      alert('标签名不能为空')
-      return false;
-    }
-    if(tagName !== null){
-      setTags([...tags, {id:createId(),name:tagName}])
-    }
-  }
+  
   const onToggleTag = (tag:number)=>{
     const index = props.value.indexOf(tag)
     if(index < 0){
@@ -68,7 +59,7 @@ const TagsSection:React.FC<Props>=(props)=>{
           <li key={tag.id} onClick={()=>{onToggleTag(tag.id)}} className={getClass(tag.id)}>{tag.name}</li>
           )}
       </ol>
-      <button onClick={onAddTag}>新增标签</button>
+      <button onClick={addTag}>新增标签</button>
     </Wrapper>
   )
 }
