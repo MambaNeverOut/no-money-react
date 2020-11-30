@@ -7,18 +7,27 @@ type tag = {
   id: number,
   name: string
 }
-const defaultTags = [
-  {id: createId(), name:'衣'},
-  {id: createId(), name:'食'},
-  {id: createId(), name:'住'},
-  {id: createId(), name:'行'},
-     // {id: (new createID()).value, name:'行'},  class 方案也可以
-    // {id: (new createID()).addOneHundred(), name:'行'},
-]
+// const defaultTags = [
+//   {id: createId(), name:'衣'},
+//   {id: createId(), name:'食'},
+//   {id: createId(), name:'住'},
+//   {id: createId(), name:'行'},
+//      // {id: (new createID()).value, name:'行'},  class 方案也可以
+//     // {id: (new createID()).addOneHundred(), name:'行'},
+// ]
 const useTags = () => {
   const [tags, setTags] = useState<tag []>([])
   useEffect(()=>{
-    setTags(JSON.parse(window.localStorage.getItem('tags') || '[]'))
+    let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]')
+    if(localTags.length === 0){
+      localTags = [
+        {id: createId(), name:'衣'},
+        {id: createId(), name:'食'},
+        {id: createId(), name:'住'},
+        {id: createId(), name:'行'},
+      ]
+    }
+    setTags(localTags)
   },[])
   useUpdate(()=> window.localStorage.setItem('tags',JSON.stringify(tags)),[tags])
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0]  

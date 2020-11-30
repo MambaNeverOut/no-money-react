@@ -1,47 +1,51 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from 'components/Layout'
-import styled from 'styled-components'
-import { TagsSection } from 'views/Tags/TagsSection';
-import { CategorySection } from './Tags/CategorySection';
-import { NoteSection } from './Tags/NoteSection';
-import { NumberPadSection } from './Tags/NumberPadSection';
+import { useTags } from 'components/useTags';
+import styled from 'styled-components';
+import Icon from 'components/Icon';
+import { Link } from 'react-router-dom';
+import { Button } from 'components/Button';
+import { Center } from 'components/Center';
+import { Space } from 'components/Space';
 
-
-const MyLayout = styled(Layout)`
-  display:flex;
-  flex-direction:column;
-`
-type Category = '-' | '+'
-function Tags() {
-  const [selected, setSelected] = useState({
-    tags: [] as number[],
-    note: '',
-    category: '-' as Category,
-    amount: 0
-  })
-  type Selected = typeof selected
-  const onChange = (obj: Partial<Selected>) => {
-    setSelected({
-      ...selected,
-      ...obj
-    })
+const TagList = styled.ol`
+  font-size:16px;
+  background-color:white;
+  > li {
+    border-bottom: 1px solid #d5d5d9;
+    line-height: 20px;
+    >a{
+      padding: 12px 16px 12px 0;
+      margin-left: 16px;
+      display: flex;
+      justify-content:space-between;
+      align-items:center
+    }
   }
+`
+
+
+function Tags() {
+  const {tags, setTags,addTag} = useTags()
   return (
-    <MyLayout>
-      {/* {selected.tags}
-      {selected.note}
-      {selected.category}
-      {selected.amount} // 遗留bug，小数点会被转换消失 */}
-       <TagsSection value={selected.tags} 
-                    onChange={(tags) => onChange({tags})}/>
-        <NoteSection value={selected.note}
-                     onChange={(note) => {onChange({note})}}/>  
-        <CategorySection value={selected.category}
-                         onChange={(category)=>{onChange({category})}}/>
-        <NumberPadSection value={selected.amount}
-                          onChange={(amount)=>{onChange({amount})}}
-                          onOk={()=>{}}/>
-    </MyLayout>
+    <Layout>
+      <TagList>
+        {tags.map(tag=>
+        <li key={tag.id}>
+          <Link to={'/tags/'+tag.id}>
+            <span className="oneLine">{tag.id}:{tag.name}</span>
+            <Icon name="right"></Icon>
+          </Link>
+        </li>)}
+      </TagList>
+      <Center>
+        <Space></Space>
+        <Space></Space>
+        <Space></Space>
+        <Button onClick={addTag}>新增标签</Button>
+        <Space></Space>
+      </Center>
+    </Layout>
   );
 }
 
