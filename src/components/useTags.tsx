@@ -1,6 +1,7 @@
 // import { createID } from "lib/ClassCreateId"
+import { useUpdate } from "hooks/useUpdate"
 import { createId } from "lib/createId"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type tag = {
   id: number,
@@ -16,6 +17,10 @@ const defaultTags = [
 ]
 const useTags = () => {
   const [tags, setTags] = useState<tag []>([])
+  useEffect(()=>{
+    setTags(JSON.parse(window.localStorage.getItem('tags') || '[]'))
+  },[])
+  useUpdate(()=> window.localStorage.setItem('tags',JSON.stringify(tags)),[tags])
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0]  
   const findTagIndex = (id:number)=>{
     let result = -1 
