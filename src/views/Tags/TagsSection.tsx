@@ -1,4 +1,4 @@
-import { useTags } from 'components/useTags';
+import { useTags } from 'hooks/useTags';
 import { createId } from 'lib/createId';
 import React, { useState } from 'react';
 import styled from 'styled-components';
