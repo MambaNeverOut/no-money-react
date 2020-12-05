@@ -14,7 +14,7 @@ import { useUpdate } from "./useUpdate"
 // }
 // ts声明两种不同的语法2
 // 在第一种类型的基础上减少某一种属性
-type RecordItem ={
+export type RecordItem ={
   tags: number[],
   note: string,
   category: '-' | '+',
