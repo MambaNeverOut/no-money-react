@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   >ul{
     display:flex;
-    background-color:#c5c5c5;
     >li{
       font-size:24px;
       padding:  18px 0;

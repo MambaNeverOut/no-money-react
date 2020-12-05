@@ -30,6 +30,7 @@ const NumberPadSection:React.FC<Props> = (props)=>{
     if(text === 'OK'){
       // TODO
       if(props.onOk){
+        _setOutput('0')
         props.onOk()
       }
       return ;

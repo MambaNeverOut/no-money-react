@@ -12,6 +12,9 @@ const MyLayout = styled(Layout)`
   display:flex;
   flex-direction:column;
 `
+const CategoryWrapper = styled.div`
+  background-color:#c5c5c5;
+`
 type Category = '-' | '+'
 
 const defaultFormData = {
@@ -42,14 +45,14 @@ function Money() {
   }
   return (
     <MyLayout>
-      {JSON.stringify(selected)}
-      {/* // 遗留bug，小数点会被转换消失 */}
        <TagsSection value={selected.tags} 
                     onChange={(tags) => onChange({tags})}/>
         <NoteSection value={selected.note}
                      onChange={(note) => {onChange({note})}}/>  
-        <CategorySection value={selected.category}
+        <CategoryWrapper>
+          <CategorySection value={selected.category}
                          onChange={(category)=>{onChange({category})}}/>
+        </CategoryWrapper>
         <NumberPadSection value={selected.amount}
                           onChange={(amount)=>{onChange({amount})}}
                           onOk={submit}/>

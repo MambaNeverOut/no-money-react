@@ -70,8 +70,13 @@ const useTags = () => {
 
     setTags(tags.filter(tag=>tag.id !== id))
   }
+  const getName = (id:number)=>{
+    const tag = tags.filter(tag=>tag.id===id)[0]
+    return tag?tag.name:''
+  }
   return {
     tags,setTags,findTag,addTag,updateTag,deleteTag
+    ,getName
   }
 }
 
